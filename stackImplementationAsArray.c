@@ -1,50 +1,55 @@
 #include <stdio.h>
 #include <stdlib.h>
-struct node{
-int info;
-struct node * next;
-};
-struct node * createNode(){
-struct node * stack;
-stack=(struct node *) malloc(sizeof(struct node));
-return stack;
-}
-int pop(struct node **s){
-int item;
-if(*s==NULL){
-    printf("The list is empty so it can not be popped \n");
-    return 0;
-}
-else{
-    struct node *t;
-    t=*s;
-    item=(*s)->info;
-    *s=(*s)->next;
-    free (t);
-    printf("Popped item : %d",item);
-}
-}
-void push(struct node **s,int item){
-struct node * temp;
-temp=createNode();
-if(temp!=NULL){
-  temp->info=item;
-  temp->next=*s;
-  *s=temp;
-}
-}
-int peek(struct node **s){
-int item;
-if(*s==NULL){
-    return (0);
-}
-else {
-    item=(*s)->info;
-    return (item);
-}
-}
-void main()
-{
+
+  struct node{
+    int info;
+  struct node * next;
+  };
+  
+  struct node * createNode(){
+    struct node * stack;
+    stack=(struct node *) malloc(sizeof(struct node));
+    return stack;
+  }
+  
+  int pop(struct node **s){
+    int item;
+    if(*s==NULL){
+      printf("The list is empty so it can not be popped \n");
+      return 0;
+    }
+    else{
+      struct node *t;
+      t=*s;
+      item=(*s)->info;
+      *s=(*s)->next;
+      free (t);
+      printf("Popped item : %d",item);
+    }
+  }
+  
+  void push(struct node **s,int item){
+    struct node * temp;
+    temp=createNode();
+    if(temp!=NULL){
+      temp->info=item;
+      temp->next=*s;
+      *s=temp;
+    }
+  }
+  
+  int peek(struct node **s){
+    int item;
+    if(*s==NULL){
+      return (0);
+    }
+    else {
+      item=(*s)->info;
+      return (item);
+    }
+  }
+  
+  void main(){
     struct node * stack=NULL;
     int item,choice;
     while(1){
@@ -70,6 +75,5 @@ void main()
                 break;
        default : printf("You didn't the enter number according to our requirements");
      }
-}
-
+    }
 }
